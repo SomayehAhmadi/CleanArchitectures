@@ -1,0 +1,17 @@
+
+services:
+
+    sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        restart: always
+        environment:
+            SA_PASSWORD: "12345678"
+            ACCEPT_EULA: "Y"
+        networks:
+            - dotnet-ddd
+        ports:
+            - "1433:1433"
+
+networks:
+    dotnet-ddd:
+        name: dotnet-ddd-network

@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Application.Repositories;
+﻿using CleanArchitecture.Application.Features.ViewModel;
+using CleanArchitecture.Application.Repositories;
 using CleanArchitecture.Domain.Common;
 using CleanArchitecture.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         Context = context;
     }
-    
+
     public void Create(T entity)
     {
         entity.DateCreated = DateTimeOffset.UtcNow;
@@ -41,4 +42,6 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         return Context.Set<T>().ToListAsync(cancellationToken);
     }
+    
+
 }
