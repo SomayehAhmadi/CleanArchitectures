@@ -10,6 +10,8 @@ public sealed class GetAllFlightMapper : Profile
     {
         CreateMap<GetAllFlightViewModel, Flight>().ReverseMap()
                  .ForMember(x => x.LaunchMethod, opt => opt.MapFrom(s => s.LaunchMethod.ToString()));
+        CreateMap<GetAllFlightViewModel, Flight>().ReverseMap();
+        CreateMap<GetAllAirportViewModel, Airport>().ReverseMap();
 
     }
 }

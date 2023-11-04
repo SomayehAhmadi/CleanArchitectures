@@ -15,7 +15,7 @@ public class AirportRepository : BaseRepository<Airport>, IAirportRepository
     public Task<List<Airport>> GetAllByPagination(GetAllAirportQuery request, CancellationToken cancellationToken = default)
     {
         var pagination = request.Pagination;
-        return Context.Airports.Skip(pagination.Offset * pagination.Limit).Take(pagination.Offset)
+        return Context.Airports.Skip((pagination.Page-1) * pagination.PageSize).Take(pagination.PageSize)
             .ToListAsync(cancellationToken);
     }
 }
