@@ -19,6 +19,7 @@ namespace CleanArchitecture.Persistence.Mapping
             builder.Property(x => x.LaunchMethod).IsRequired().HasDefaultValue(LaunchMethods.None).HasColumnType("tinyint");
             builder.Property(x => x.ArrivalTime).IsRequired();
 
+            builder.HasOne(x => x.Airport).WithMany(x => x.Flights).HasForeignKey(x => x.AirPortId).OnDelete(DeleteBehavior.NoAction);
 
         }
     }
