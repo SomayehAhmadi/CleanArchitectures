@@ -20,6 +20,7 @@ var app = builder.Build();
 var serviceScope = app.Services.CreateScope();
 var dataContext = serviceScope.ServiceProvider.GetService<DataContext>();
 dataContext?.Database.EnsureCreated();
+dataContext.Seed();
 
 app.UseSwagger();
 app.UseSwaggerUI();
