@@ -18,8 +18,8 @@ namespace CleanArchitecture.Application.Features.AirportFeatures.GetFlight
 
         public async Task<List<GetAllFlightViewModel>> Handle(GetAllFlightQuery request, CancellationToken cancellationToken)
         {
-            var Familys = await _flightRepository.GetById(request, new CancellationToken());
-            return _mapper.Map<List<GetAllFlightViewModel>>(Familys);
+            var flights = await _flightRepository.GetById(request, new CancellationToken());
+            return _mapper.Map<List<GetAllFlightViewModel>>(flights);
         }
     }
 

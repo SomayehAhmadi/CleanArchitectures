@@ -3,6 +3,7 @@
     public class GetAllFlightViewModel
     {
         public string LaunchMethod { get; internal set; }
+        public long Id { get; set; }
         public long AirPortId { get; set; }
         public string Aircraft { get; set; }
 
