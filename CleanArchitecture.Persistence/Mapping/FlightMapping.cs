@@ -11,6 +11,9 @@ namespace CleanArchitecture.Persistence.Mapping
         {
             builder.ToTable("Flight", "TBL");
             builder.AddEntityMapping();
+
+            builder.HasKey(t => t.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd().HasDefaultValue(0); 
             builder.Property(x => x.Aircraft).IsRequired().HasMaxLength(250);
             builder.Property(x => x.DepartureTime).IsRequired();
             builder.Property(x => x.LaunchMethod).IsRequired().HasDefaultValue(LaunchMethods.None).HasColumnType("tinyint");
