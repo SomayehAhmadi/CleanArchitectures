@@ -14,11 +14,8 @@ public class DataContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
     }
-    //public DbSet<User> Users { get; set; }
-    public DbSet<Student> Students { get; set; }
-    public DbSet<Parent> Parents { get; set; }
-    public DbSet<ContactInfo> ContactInfos { get; set; }
-    public DbSet<Insurance> Insurances { get; set; }
-    public DbSet<Family> Families { get; set; }
-    public DbSet<Address> Addresses { get; set; }
+    public DbSet<Airport> Airports { get; set; }
+ 
+    public DbSet<Flight> Flights { get; set; }
+
 }

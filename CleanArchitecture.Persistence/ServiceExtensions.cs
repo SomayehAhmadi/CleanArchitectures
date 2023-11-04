@@ -15,7 +15,7 @@ public static class ServiceExtensions
         services.AddDbContext<DataContext>(opt => opt.UseSqlServer(connectionString));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IStudentRepository, StudentRepository>();
-        services.AddScoped<IFamilyRepository, FamilyRepository>();
+        services.AddScoped<IAirportRepository, AirportRepository>();
+        services.AddScoped<IFlightRepository, FlightRepository>();
     }
 }
