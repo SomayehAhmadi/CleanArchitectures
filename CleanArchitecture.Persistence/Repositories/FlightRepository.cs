@@ -18,8 +18,8 @@ public partial class FlightRepository : BaseRepository<Flight>, IFlightRepositor
         var pagination = getAllFlight.Pagination;
         var convertProperty = typeof(Flight).GetProperty(getAllFlight.SortName);
 
-        return Context.Flights.Where(e => e.AirPortId == getAllFlight.AirPortId).Skip(pagination.Offset > 0 ? (pagination.Offset * pagination.Limit) : 0)
-                .Take(pagination.Limit)
+        return Context.Flights.Where(e => e.AirPortId == getAllFlight.AirPortId).Skip((pagination.Page - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
                 .OrderByDescending(n => (convertProperty.GetValue(n) ?? string.Empty).ToString())
                 .ToListAsync();
     }
@@ -28,7 +28,7 @@ public partial class FlightRepository : BaseRepository<Flight>, IFlightRepositor
         var pagination = getAllFlight.Pagination;
         var convertProperty = typeof(Flight).GetProperty(getAllFlight.SortName);
 
-        return Context.Flights.Skip(pagination.Offset * pagination.Limit).Take(pagination.Offset)
+        return Context.Flights.Skip((pagination.Page - 1) * pagination.PageSize).Take(pagination.PageSize)
             .OrderByDescending(n => (convertProperty.GetValue(n) ?? string.Empty).ToString())
             .ToListAsync(cancellationToken);
     }
